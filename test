@@ -3,5 +3,5 @@
 make clean
 make
 
-echo "====Test 1===="
+echo "\n====Test 1===="
 ./proj2
