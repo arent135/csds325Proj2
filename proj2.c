@@ -49,6 +49,22 @@ void parseargs(int argc, char *argv[]){
                 fprintf(stderr, "Invalid option.");
                 exit(1);
         }
+
+        //check to make sure the modes all work
+        if(forward_mode + dump_mode + sim_mode > 1){
+            fprintf(stderr, "Only select one mode.\n");
+            exit(1);
+        }
+
+        if(forward_mode && forwarding_table == NULL){
+            fprintf(stderr, "Need to attach forwarding table for Forward Printing Mode.\n");
+            exit(1);
+        }
+
+        if((dump_mode || sim_mode) && packet_trace == NULL){
+            fprintf(stderr, "Need to attach packet trace for Dump or Simulate Mode.\n");
+            exit(1);
+        }
     }
 
     
@@ -56,6 +72,20 @@ void parseargs(int argc, char *argv[]){
 
 int main(int argc,char *argv[]){
     parseargs(argc, argv);
+
+    if(forward_mode == 1){
+        printf("Forwarding Mode\n");
+    }
+    else if(dump_mode == 1){
+        printf("Dump Mode\n");
+    }
+    else if(sim_mode == 1){
+        printf("Simulate Mode\n");
+    }
+    else {
+        fprintf(stderr, "No mode selected.\n");
+        exit(1);
+    }
     printf("Hello World\n");
     return 0;
 }

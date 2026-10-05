@@ -4,4 +4,4 @@ make clean
 make
 
 echo "\n====Test 1===="
-./proj2
+./proj2 -f
