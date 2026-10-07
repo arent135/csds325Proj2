@@ -4,4 +4,25 @@ make clean
 make
 
 echo "\n====Test 1===="
-./proj2 -f
+./proj2 -f -t samp-1.tbl > output
+diff output samp-1-f.out
+
+echo "\n====Test 2===="
+./proj2 -d -p samp-17.trace > output
+diff output samp-17-d.out
+
+echo "\n====Test 3===="
+./proj2 -f -t samp-17.tbl > output
+diff output samp-17-f.out
+
+echo "\n====Test 4===="
+./proj2 -r -p samp-17.trace -t samp-17.tbl > output
+diff output samp-17-r.out
+
+echo "\n====Test 5===="
+./proj2 -d -p samp-15.trace > output
+diff output samp-15-d.out
+
+echo "\n====Test 6===="
+./proj2 -f -t samp-15.tbl > output
+diff output samp-15-f.out
